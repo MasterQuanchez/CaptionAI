@@ -1,0 +1,32 @@
+{
+  "name": "caption-ai-desktop",
+  "version": "0.1.0",
+  "description": "Desktop photo captioning app with local AI and privacy",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"yarn workspace @caption-ai/main dev\" \"yarn workspace @caption-ai/renderer dev\"",
+    "build": "yarn workspace @caption-ai/renderer build && yarn workspace @caption-ai/main build",
+    "dist": "yarn build && yarn workspace @caption-ai/main dist",
+    "lint": "yarn workspaces run lint",
+    "typecheck": "yarn workspaces run typecheck",
+    "test": "yarn workspaces run test",
+    "clean": "yarn workspaces run clean"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "concurrently": "^8.2.0",
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "yarn": ">=1.22.0"
+  }
+}

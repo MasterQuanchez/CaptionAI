@@ -1,0 +1,54 @@
+{
+  "name": "@caption-ai/main",
+  "version": "0.1.0",
+  "description": "Electron main process",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "lint": "eslint src --ext .ts",
+    "typecheck": "tsc --noEmit",
+    "dist": "electron-builder"
+  },
+  "dependencies": {
+    "@caption-ai/shared": "workspace:*",
+    "better-sqlite3": "^9.2.2",
+    "chokidar": "^3.5.3",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "electron-log": "^4.4.8",
+    "exiftool-vendored": "^15.6.0",
+    "sharp": "^0.32.6",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/node": "^20.5.0",
+    "typescript": "^5.1.6"
+  },
+  "build": {
+    "appId": "com.captionai.desktop",
+    "productName": "Caption AI",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "category": "public.app-category.photography",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
